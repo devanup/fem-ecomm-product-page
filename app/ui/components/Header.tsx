@@ -5,9 +5,11 @@ import { Nav } from '.';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
+import { Cart } from './Cart';
 
 export const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [cartIsOpen, setCartIsOpen] = useState(false);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -18,6 +20,14 @@ export const Header = () => {
 		window.addEventListener('resize', handleResize);
 		return () => window.removeEventListener('resize', handleResize);
 	}, []);
+	// Disable scrolling when the menu is open
+	useEffect(() => {
+		if (isOpen) {
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = '';
+		}
+	}, [isOpen]);
 
 	return (
 		<header className='flex border-b items-center border-b-gray-300 px-6 md:px-0 lg:py-0 py-6 relative'>
@@ -38,9 +48,19 @@ export const Header = () => {
 					onClick={() => setIsOpen(false)}
 				></div>
 			)}
+			{cartIsOpen && (
+				<div
+					className='fixed inset-0 bg-transparent z-10'
+					onClick={() => setCartIsOpen(false)}
+				></div>
+			)}
 			<Nav isOpen={isOpen} setIsOpen={setIsOpen} />
 			<div className='flex space-x-6 ml-auto'>
-				<Button variant={'link'} size={'icon'}>
+				<Button
+					variant={'link'}
+					size={'icon'}
+					onClick={() => setCartIsOpen(!cartIsOpen)}
+				>
 					<Image
 						src='/images/icon-cart.svg'
 						alt='cart'
@@ -58,6 +78,7 @@ export const Header = () => {
 					/>
 				</div>
 			</div>
+			<Cart cartIsOpen={cartIsOpen} setCartIsOpen={setCartIsOpen} />
 		</header>
 	);
 };

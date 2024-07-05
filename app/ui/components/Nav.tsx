@@ -22,7 +22,7 @@ export const Nav = ({
 	return (
 		<nav
 			className={clsx(
-				'lg:flex flex-col lg:flex-row items-center font-bold space-y-4 lg:space-y-0 lg:space-x-8 absolute lg:relative top-0 left-0 lg:top-auto lg:left-auto w-3/5 lg:w-auto h-[100vh] lg:h-auto bg-white lg:bg-transparent lg:pt-0 md:pt-16 pt-16 z-20',
+				'lg:flex flex-col lg:flex-row items-center font-bold md:font-normal space-y-4 lg:space-y-0 lg:space-x-8 absolute lg:relative top-0 left-0 lg:top-auto lg:left-auto w-3/5 lg:w-auto h-[100vh] lg:h-auto bg-white lg:bg-transparent lg:pt-0 md:pt-16 pt-16 z-20',
 				{ hidden: !isOpen, flex: isOpen },
 			)}
 		>
