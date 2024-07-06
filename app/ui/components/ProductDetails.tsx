@@ -1,6 +1,7 @@
 import { Badge } from '@/components/ui/badge';
-import { productData } from '@/lib/productData';
 import Image from 'next/image';
+
+import { productData } from '@/lib/productData';
 
 export const ProductDetails = () => {
 	const { brand, name, price, salePercentage, description } =

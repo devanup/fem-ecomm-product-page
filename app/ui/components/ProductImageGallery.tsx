@@ -1,30 +1,9 @@
 'use client';
-import { productData } from '@/lib/productData';
+
 import Image from 'next/image';
 import { useState } from 'react';
 
-const productImagesSrc = [
-	{
-		thumbnailSrc: '/images/image-product-1-thumbnail.jpg',
-		productSrc: '/images/image-product-1.jpg',
-		alt: 'product 1 image',
-	},
-	{
-		thumbnailSrc: '/images/image-product-2-thumbnail.jpg',
-		productSrc: '/images/image-product-2.jpg',
-		alt: 'product 2 image',
-	},
-	{
-		thumbnailSrc: '/images/image-product-3-thumbnail.jpg',
-		productSrc: '/images/image-product-3.jpg',
-		alt: 'product 3 image',
-	},
-	{
-		thumbnailSrc: '/images/image-product-4-thumbnail.jpg',
-		productSrc: '/images/image-product-4.jpg',
-		alt: 'product 4 image',
-	},
-];
+import { productData } from '@/lib/productData';
 
 export const ProductImageGallery = () => {
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);

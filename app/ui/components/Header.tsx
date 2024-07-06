@@ -1,11 +1,13 @@
 'use client';
 
-import Link from 'next/link';
-import { Nav } from '.';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+
+import { Nav } from './Nav';
 import { Cart } from './Cart';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 export const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +22,8 @@ export const Header = () => {
 		window.addEventListener('resize', handleResize);
 		return () => window.removeEventListener('resize', handleResize);
 	}, []);
-	// Disable scrolling when the menu is open
+
+	// scrolling disabled when the menu is open
 	useEffect(() => {
 		if (isOpen) {
 			document.body.style.overflow = 'hidden';
@@ -60,6 +63,7 @@ export const Header = () => {
 					variant={'link'}
 					size={'icon'}
 					onClick={() => setCartIsOpen(!cartIsOpen)}
+					className='relative'
 				>
 					<Image
 						src='/images/icon-cart.svg'
@@ -67,13 +71,16 @@ export const Header = () => {
 						width={25}
 						height={25}
 					/>
+					<Badge className='bg-primary-orange hover:bg-primary-orange absolute left-4 bottom-5 flex justify-center w-4 h-4 text-[.8em]'>
+						<span>1</span>
+					</Badge>
 				</Button>
-				<div className='w-10 h-10 rounded-full'>
+				<div className='w-11 h-11 rounded-full'>
 					<Image
 						src='/images/image-avatar.png'
 						alt='avatar'
-						width={40}
-						height={40}
+						width={45}
+						height={45}
 						className='rounded-full cursor-pointer border-2 border-transparent hover:border-primary-orange'
 					/>
 				</div>
@@ -82,8 +89,3 @@ export const Header = () => {
 		</header>
 	);
 };
-
-/* 
-Prompt for gpt:
-
-*/
