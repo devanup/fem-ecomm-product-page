@@ -40,7 +40,7 @@ export const Nav = ({
 				<Link
 					key={index}
 					href={item.href}
-					className='lg:border-b-4 border-b-0 lg:border-r-0 border-r-4 md:py-0 lg:py-8 py-1 px-6 lg:px-0 border-b-transparent border-r-transparent hover:border-orange-400 w-full lg:w-auto'
+					className='lg:border-b-4 border-b-0 lg:border-r-0 border-r-4 md:py-0 lg:py-8 py-1 px-6 lg:px-0 border-b-transparent border-r-transparent hover:border-primary-orange w-full lg:w-auto'
 				>
 					{item.name}
 				</Link>

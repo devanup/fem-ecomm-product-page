@@ -74,7 +74,7 @@ export const Header = () => {
 						alt='avatar'
 						width={40}
 						height={40}
-						className='rounded-full cursor-pointer border-2 border-transparent hover:border-orange-400'
+						className='rounded-full cursor-pointer border-2 border-transparent hover:border-primary-orange'
 					/>
 				</div>
 			</div>
@@ -82,3 +82,8 @@ export const Header = () => {
 		</header>
 	);
 };
+
+/* 
+Prompt for gpt:
+
+*/
