@@ -34,11 +34,6 @@ export default function Home() {
 		setSelectedQuantity(0); // Reset quantity after adding to cart
 	};
 
-	// const handleRemoveItem = (index: number) => {
-	// 	const newCartItems = [...cartItems];
-	// 	newCartItems.splice(index, 1);
-	// 	setCartItems(newCartItems);
-	// };
 	const handleRemoveFromCart = (index: number) => {
 		setCartItems((prevItems) => prevItems.filter((_, i) => i !== index));
 	};

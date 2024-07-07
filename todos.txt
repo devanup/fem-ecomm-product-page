@@ -1,0 +1,13 @@
+✔ ☐
+TODOS:
+[Jul 7]
+✔ Fix the previous and next button z-index, 
+✔ Make the quantity button functional,
+✔ Modify the code to pass the quantity to the shopping cart,
+✔ Make the shopping cart functional,
+
+[Jul 8]
+☐ Framer Motion animation for shopping cart, mobile nav, and carousel
+☐ Pop up view for the images
+
+# Clue: https://www.frontendmentor.io/solutions/ecommerce-product-page-nextjs-tailwind-lUkZ3lpmy9
