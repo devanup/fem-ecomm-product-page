@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
-import './globals.css';
 import { Kumbh_Sans } from 'next/font/google';
+
+import { Toaster } from '@/components/ui/toaster';
+
+import './globals.css';
 
 const kumbhSans = Kumbh_Sans({ subsets: ['latin'] });
 
@@ -16,7 +19,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={kumbhSans.className}>{children}</body>
+			<body className={kumbhSans.className}>
+				{children}
+				<Toaster />
+			</body>
 		</html>
 	);
 }

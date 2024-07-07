@@ -1,0 +1,8 @@
+The children in the Home component is wrapped inside CartProvider. This is the parent component of the children. The CartProvider component is the one that holds the state of the cart. The state of the cart is passed down to the children as a prop. The children can then access the state of the cart and update it as needed. The children can also access the functions that are passed down from the CartProvider component to update the state of the cart. This way, the state of the cart is managed in a centralized location and can be accessed and updated by all the children that need it. This makes it easier to manage the state of the cart and keep it in sync across all the components that need it.
+
+Let's try and achieve this. I'm sharing the code for page, Header, Cart and ProductDetails comopnents. Let's make this happen.
+
+Ok we will get to that soon. To get there, i need to make a few adjustment to my code. I want to move this bit of code form ProductDetails to Home component and pass it down to the ProductDetails component as props. How to do it? Also make sure to specify the type of the props in the Home and ProductDetails components.
+const { brand, name, price, salePercentage, description } =
+		productData.details;
+	const salePrice = (price * (1 - salePercentage / 100)).toFixed(2);

@@ -9,7 +9,9 @@ import { Cart } from './Cart';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
-export const Header = () => {
+import { CartItem } from '@/lib/types';
+
+export const Header = ({ cartItems }: { cartItems: CartItem[] }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [cartIsOpen, setCartIsOpen] = useState(false);
 
@@ -31,6 +33,8 @@ export const Header = () => {
 			document.body.style.overflow = '';
 		}
 	}, [isOpen]);
+
+	const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
 	return (
 		<header className='flex border-b items-center border-b-gray-300 px-6 md:px-0 lg:py-0 py-6 relative'>
@@ -72,7 +76,7 @@ export const Header = () => {
 						height={25}
 					/>
 					<Badge className='bg-primary-orange hover:bg-primary-orange absolute left-4 bottom-5 flex justify-center w-4 h-4 text-[.8em]'>
-						<span>1</span>
+						<span>{totalQuantity > 99 ? '99+' : totalQuantity}</span>
 					</Badge>
 				</Button>
 				<div className='w-11 h-11 rounded-full'>

@@ -1,12 +1,45 @@
-import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 
-import { productData } from '@/lib/productData';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
 
-export const ProductDetails = () => {
-	const { brand, name, price, salePercentage, description } =
-		productData.details;
-	const salePrice = (price * (1 - salePercentage / 100)).toFixed(2);
+import { ProductDetails as ProductDetailsType } from '@/lib/types';
+
+export const ProductDetails = ({
+	productDetails,
+	salePrice,
+	selectedQuantity,
+	setSelectedQuantity,
+	handleAddToCart,
+}: {
+	productDetails: ProductDetailsType;
+	salePrice: string;
+	selectedQuantity: number;
+	setSelectedQuantity: (quantity: number) => void;
+	handleAddToCart: () => void;
+}) => {
+	const { brand, name, price, salePercentage, description } = productDetails;
+	const { toast } = useToast();
+
+	const handleAddToCartClick = () => {
+		if (selectedQuantity > 0) {
+			handleAddToCart();
+			toast({
+				// title: 'Item added to cart',
+				description: `${selectedQuantity} ${
+					selectedQuantity === 1 ? 'item' : 'items'
+				} added to cart`,
+				className: 'bg-lime-600 text-white',
+			});
+		} else {
+			toast({
+				// title: 'Please select a quantity',
+				description: 'Please select a quantity before adding to cart',
+				className: 'bg-red-500 text-white',
+			});
+		}
+	};
 
 	return (
 		<div className='flex flex-col space-y-6 p-10 md:p-0'>
@@ -37,16 +70,45 @@ export const ProductDetails = () => {
 			{/* Quantity and Add to Cart */}
 			<div className='flex md:flex-row flex-col items-center md:space-x-3 space-x-0 md:space-y-0 space-y-3'>
 				<div className='flex items-center justify-between bg-gray-100 p-3 rounded-md w-full md:w-2/5'>
-					<button className='text-xl text-primary-orange hover:text-primary-orange/65 font-bold transition duration-300 ease-in-out'>
-						-
+					<button
+						className='text-xl text-primary-orange hover:text-primary-orange/65 font-bold transition duration-300 ease-in-out'
+						onClick={() =>
+							setSelectedQuantity(
+								selectedQuantity !== 0 ? selectedQuantity - 1 : 0,
+							)
+						}
+					>
+						{/* - */}
+						<Image
+							src={'/images/icon-minus.svg'}
+							alt='minus icon'
+							width={10}
+							height={10}
+						/>
 					</button>
-					<p className='font-semibold'>0</p>
-					<button className='text-xl text-primary-orange hover:text-primary-orange/65 font-bold transition duration-300 ease-in-out'>
-						+
+					<p className='font-semibold'>{selectedQuantity}</p>
+					<button
+						className='text-xl font-bold transition duration-300 ease-in-out'
+						onClick={() =>
+							setSelectedQuantity(
+								selectedQuantity < 99 ? selectedQuantity + 1 : selectedQuantity,
+							)
+						}
+					>
+						{/* + */}
+						<Image
+							src={'/images/icon-plus.svg'}
+							alt='plus icon'
+							width={10}
+							height={10}
+						/>
 					</button>
 				</div>
 
-				<button className='bg-orange-500 hover:bg-primary-orange/65 text-black px-6 py-3 rounded-md font-semibold flex items-center space-x-3 w-full md:w-4/5 justify-center transition duration-300 ease-in-out'>
+				<button
+					className='bg-orange-500 hover:bg-primary-orange/65 text-black px-6 py-3 rounded-md font-semibold flex items-center space-x-3 w-full md:w-4/5 justify-center transition duration-300 ease-in-out'
+					onClick={handleAddToCartClick}
+				>
 					<Image
 						src='/images/icon-cart.svg'
 						alt='cart icon'

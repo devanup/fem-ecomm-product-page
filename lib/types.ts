@@ -12,6 +12,11 @@ export interface ProductDetails {
 	description: string;
 }
 
+export interface CartItem extends ProductDetails {
+	salePrice: string;
+	quantity: number;
+}
+
 export interface ProductData {
 	images: ProductImage[];
 	details: ProductDetails;
