@@ -30,7 +30,7 @@ export const ProductImageGallery = () => {
 					objectFit='cover'
 					className='md:rounded-lg rounded-none'
 				/>
-				<div className='w-full h-14 flex justify-between absolute top-1/2 transform -translate-y-1/2 px-4 z-10 md:hidden'>
+				<div className='w-full h-14 flex justify-between absolute top-1/2 transform -translate-y-1/2 px-4 md:hidden'>
 					<div
 						className='w-10 h-10 bg-white flex items-center justify-center rounded-full cursor-pointer'
 						onClick={handlePrevClick}

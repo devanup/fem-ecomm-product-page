@@ -5,28 +5,20 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 
 import { productData } from '@/lib/productData';
-import { ProductDetails } from '@/lib/types';
+import { CartItem } from '@/lib/types';
 
 export const Cart = ({
+	cartItems,
 	cartIsOpen,
 	setCartIsOpen,
+	handleRemoveFromCart,
 }: {
+	cartItems: CartItem[];
 	cartIsOpen: boolean;
 	setCartIsOpen: (cartIsOpen: boolean) => void;
+	handleRemoveFromCart: (index: number) => void;
 }) => {
-	const { brand, name, price, salePercentage, description } =
-		productData.details;
 	const imgSrc = productData.images[0]?.thumbnailSrc;
-	const cartItems: (ProductDetails & { imgSrc: string })[] = [
-		{
-			brand,
-			name,
-			price,
-			salePercentage,
-			description,
-			imgSrc,
-		},
-	];
 
 	return (
 		<Card
@@ -67,18 +59,29 @@ export const Cart = ({
 								<div className='flex items-center space-x-4'>
 									<div className='w-14 h-14 bg-gray-300 rounded-md relative'>
 										<img
-											src={item.imgSrc}
+											src={imgSrc}
 											alt='product image'
 											className='w-full h-full object-cover rounded-md'
 										/>
 									</div>
 									<div className='flex flex-col space-y-1'>
 										<h1 className='font-light text-sm'>{item.name}</h1>
-										<p className='font-semibold'>${item.price.toFixed(2)}</p>
+										<p className='font-light'>
+											{item.quantity > 1 &&
+												`$${item.salePrice} x ${item.quantity}`}{' '}
+											<span className='font-semibold'>
+												{`$${(
+													parseFloat(item.salePrice) * item.quantity
+												).toFixed(2)}`}
+											</span>
+										</p>
 									</div>
 								</div>
 								{/* delete icon */}
-								<button className='text-primary-orange hover:text-primary-orange/65 font-bold transition duration-300 ease-in-out'>
+								<button
+									className='text-primary-orange hover:text-primary-orange/65 font-bold transition duration-300 ease-in-out'
+									onClick={() => handleRemoveFromCart(index)}
+								>
 									<Image
 										src='/images/icon-delete.svg'
 										alt='delete icon'

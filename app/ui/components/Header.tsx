@@ -11,7 +11,13 @@ import { Badge } from '@/components/ui/badge';
 
 import { CartItem } from '@/lib/types';
 
-export const Header = ({ cartItems }: { cartItems: CartItem[] }) => {
+export const Header = ({
+	cartItems,
+	handleRemoveFromCart,
+}: {
+	cartItems: CartItem[];
+	handleRemoveFromCart: (index: number) => void;
+}) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [cartIsOpen, setCartIsOpen] = useState(false);
 
@@ -89,7 +95,12 @@ export const Header = ({ cartItems }: { cartItems: CartItem[] }) => {
 					/>
 				</div>
 			</div>
-			<Cart cartIsOpen={cartIsOpen} setCartIsOpen={setCartIsOpen} />
+			<Cart
+				cartItems={cartItems}
+				cartIsOpen={cartIsOpen}
+				setCartIsOpen={setCartIsOpen}
+				handleRemoveFromCart={handleRemoveFromCart}
+			/>
 		</header>
 	);
 };

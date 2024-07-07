@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
 import { ProductDetails as ProductDetailsType } from '@/lib/types';

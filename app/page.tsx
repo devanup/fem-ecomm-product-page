@@ -34,9 +34,20 @@ export default function Home() {
 		setSelectedQuantity(0); // Reset quantity after adding to cart
 	};
 
+	// const handleRemoveItem = (index: number) => {
+	// 	const newCartItems = [...cartItems];
+	// 	newCartItems.splice(index, 1);
+	// 	setCartItems(newCartItems);
+	// };
+	const handleRemoveFromCart = (index: number) => {
+		setCartItems((prevItems) => prevItems.filter((_, i) => i !== index));
+	};
 	return (
 		<main className='lg:max-w-[75%] xl:max-w-[1200px] md:w-[85%] mx-auto'>
-			<Header cartItems={cartItems} />
+			<Header
+				cartItems={cartItems}
+				handleRemoveFromCart={handleRemoveFromCart}
+			/>
 
 			<div className='w-full md:p-10 p-0 flex flex-col items-center md:flex-row md:space-x-16 md:mt-10 mt-0'>
 				<div className='w-full md:w-1/2'>
