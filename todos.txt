@@ -7,7 +7,8 @@ TODOS:
 ✔ Make the shopping cart functional,
 
 [Jul 8]
-☐ Framer Motion animation for shopping cart, mobile nav, and carousel
+☐ Update the readme to open link in a new tabm
+☐ Framer Motion animation for shopping cart, mobile nav, and carousel,
 ☐ Pop up view for the images
 
 # Clue: https://www.frontendmentor.io/solutions/ecommerce-product-page-nextjs-tailwind-lUkZ3lpmy9
