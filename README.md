@@ -4,9 +4,7 @@
 
 This web application is a fully functional implementation of a product page, meticulously transformed from a Figma design into a dynamic and interactive website. Leveraging the power of Next.js and TypeScript, the application showcases modern web development practices and delivers a seamless user experience.
 
-### **[DEMO](https://fem-ecomm-product-page.vercel.app/){:target="\_blank"}**
-
-<!-- ### **<a href="https://fem-ecomm-product-page.vercel.app/" target="_blank">DEMO</a>** -->
+### **[DEMO](https://fem-ecomm-product-page.vercel.app/)**
 
 ## Technologies Used 💻
 
