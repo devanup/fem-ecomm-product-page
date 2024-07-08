@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { Header, ProductDetails, ProductImageGallery } from './ui';
+import { Header, LightBox, ProductDetails, ProductImageGallery } from './ui';
 
 import { productData } from '@/lib/productData';
 import { ProductDetails as ProductDetailsType } from '@/lib/types';
@@ -21,6 +21,8 @@ export default function Home() {
 	};
 	const [selectedQuantity, setSelectedQuantity] = useState(0);
 	const [cartItems, setCartItems] = useState<CartItem[]>([]);
+	// detect click on main product image
+	const [isLightBoxOpen, setIsLightBoxOpen] = useState(false);
 
 	const handleAddToCart = () => {
 		setCartItems((prevItems) => [
@@ -46,7 +48,16 @@ export default function Home() {
 
 			<div className='w-full md:p-10 p-0 flex flex-col items-center md:flex-row md:space-x-16 md:mt-10 mt-0'>
 				<div className='w-full md:w-1/2'>
-					<ProductImageGallery />
+					<ProductImageGallery
+						setIsLightBoxOpen={setIsLightBoxOpen}
+						clickable={true}
+					/>
+					{isLightBoxOpen && (
+						<LightBox
+							isLightBoxOpen={isLightBoxOpen}
+							setIsLightBoxOpen={setIsLightBoxOpen}
+						/>
+					)}
 				</div>
 				<div className='w-full md:w-1/2'>
 					<ProductDetails

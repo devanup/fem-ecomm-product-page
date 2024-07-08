@@ -67,8 +67,8 @@ export const ProductDetails = ({
 			</div>
 
 			{/* Quantity and Add to Cart */}
-			<div className='flex md:flex-row flex-col items-center md:space-x-3 space-x-0 md:space-y-0 space-y-3'>
-				<div className='flex items-center justify-between bg-gray-100 p-3 rounded-md w-full md:w-2/5'>
+			<div className='flex lg:flex-row flex-col items-center lg:space-x-3 space-x-0 lg:space-y-0 space-y-3'>
+				<div className='flex items-center justify-between bg-gray-100 p-3 rounded-md w-full lg:w-2/5'>
 					<button
 						className='text-xl text-primary-orange hover:text-primary-orange/65 font-bold transition duration-300 ease-in-out'
 						onClick={() =>
@@ -105,7 +105,7 @@ export const ProductDetails = ({
 				</div>
 
 				<button
-					className='bg-orange-500 hover:bg-primary-orange/65 text-black px-6 py-3 rounded-md font-semibold flex items-center space-x-3 w-full md:w-4/5 justify-center transition duration-300 ease-in-out'
+					className='bg-orange-500 hover:bg-primary-orange/65 text-black px-6 py-3 rounded-md font-semibold flex items-center space-x-3 w-full lg:w-4/5 justify-center transition duration-300 ease-in-out'
 					onClick={handleAddToCartClick}
 				>
 					<Image

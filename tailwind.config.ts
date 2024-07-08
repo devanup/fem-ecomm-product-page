@@ -27,7 +27,7 @@ const config = {
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))',
-					orange: 'hsl(26, 100%, 55%)',
+					orange: 'hsl(26, 100%, 55%)', //
 					paleOrange: 'hsl(25, 100%, 94%)',
 				},
 				neutral: {
