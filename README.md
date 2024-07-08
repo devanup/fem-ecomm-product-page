@@ -4,7 +4,9 @@
 
 This web application is a fully functional implementation of a product page, meticulously transformed from a Figma design into a dynamic and interactive website. Leveraging the power of Next.js and TypeScript, the application showcases modern web development practices and delivers a seamless user experience.
 
-### **[DEMO](https://fem-ecomm-product-page.vercel.app/)**
+<!-- ### **[DEMO](https://fem-ecomm-product-page.vercel.app/)** -->
+
+### **<a href="https://fem-ecomm-product-page.vercel.app/" target="_blank">DEMO</a>**
 
 ## Technologies Used 💻
 
@@ -48,7 +50,7 @@ This project is not just about solving a challenge but also about pushing myself
 
 ## Challenge 🏆
 
-This project was created as a solution to the [Frontend Mentor E-commerce Product Page Challenge](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6).
+This project was created as a solution to the ### **<a href="https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6" target="_blank">Frontend Mentor E-commerce Product Page Challenge</a>**.
 
 ## Conclusion 💡
 
