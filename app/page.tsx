@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { Header, LightBox, ProductDetails, ProductImageGallery } from './ui';
+import { Header, ProductPage } from './ui';
 
 import { productData } from '@/lib/productData';
 import { ProductDetails as ProductDetailsType } from '@/lib/types';
@@ -32,12 +32,12 @@ export default function Home() {
 				salePrice,
 				quantity: selectedQuantity,
 			},
-		]);
+		]); // prevItems is the previous state of cartItems. We spread the previous items and add the new item to the end of the array. This new array is then set as the new state.
 		setSelectedQuantity(0); // Reset quantity after adding to cart
 	};
 
 	const handleRemoveFromCart = (index: number) => {
-		setCartItems((prevItems) => prevItems.filter((_, i) => i !== index));
+		setCartItems((prevItems) => prevItems.filter((_, i) => i !== index)); // prevItems.filter((_, i) => i !== index) returns a new array without the item at the specified index. This new array is then set as the new state.
 	};
 	return (
 		<main className='lg:max-w-[75%] xl:max-w-[1200px] md:w-[85%] mx-auto'>
@@ -46,29 +46,15 @@ export default function Home() {
 				handleRemoveFromCart={handleRemoveFromCart}
 			/>
 
-			<div className='w-full md:p-10 p-0 flex flex-col items-center md:flex-row md:space-x-16 md:mt-10 mt-0'>
-				<div className='w-full md:w-1/2'>
-					<ProductImageGallery
-						setIsLightBoxOpen={setIsLightBoxOpen}
-						clickable={true}
-					/>
-					{isLightBoxOpen && (
-						<LightBox
-							isLightBoxOpen={isLightBoxOpen}
-							setIsLightBoxOpen={setIsLightBoxOpen}
-						/>
-					)}
-				</div>
-				<div className='w-full md:w-1/2'>
-					<ProductDetails
-						productDetails={productDetails}
-						salePrice={salePrice}
-						selectedQuantity={selectedQuantity}
-						setSelectedQuantity={setSelectedQuantity}
-						handleAddToCart={handleAddToCart}
-					/>
-				</div>
-			</div>
+			<ProductPage
+				productDetails={productDetails}
+				salePrice={salePrice}
+				selectedQuantity={selectedQuantity}
+				setSelectedQuantity={setSelectedQuantity}
+				handleAddToCart={handleAddToCart}
+				isLightBoxOpen={isLightBoxOpen}
+				setIsLightBoxOpen={setIsLightBoxOpen}
+			/>
 		</main>
 	);
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { productData } from '@/lib/productData';
 import clsx from 'clsx';
@@ -10,16 +10,29 @@ export const ProductImageGallery = ({
 	setIsLightBoxOpen,
 	classNames,
 	clickable,
+	currentIndex,
+	setCurrentIndex,
 }: {
 	setIsLightBoxOpen: (isOpen: boolean) => void;
 	classNames?: string;
 	clickable?: boolean;
+	currentIndex: number;
+	setCurrentIndex: (index: number) => void;
 }) => {
-	const [currentImageIndex, setCurrentImageIndex] = useState(0);
+	const [currentImageIndex, setCurrentImageIndex] = useState(currentIndex);
+
+	useEffect(() => {
+		setCurrentImageIndex(currentIndex);
+	}, [currentIndex]);
 
 	const handlePrevClick = () => {
 		setCurrentImageIndex((prevIndex) =>
 			prevIndex === 0 ? productData.images.length - 1 : prevIndex - 1,
+		);
+		setCurrentIndex(
+			currentImageIndex === 0
+				? productData.images.length - 1
+				: currentImageIndex - 1,
 		);
 	};
 
@@ -27,22 +40,24 @@ export const ProductImageGallery = ({
 		setCurrentImageIndex((prevIndex) =>
 			prevIndex === productData.images.length - 1 ? 0 : prevIndex + 1,
 		);
-		console.log('currentImageIndex: ', currentImageIndex);
+		setCurrentIndex(
+			currentImageIndex === productData.images.length - 1
+				? 0
+				: currentImageIndex + 1,
+		);
 	};
+
 	return (
 		<>
 			<div className='flex flex-col items-center space-y-6'>
 				{/* Main Product Image */}
-
 				<div
-					// if classNames is passed, use it, otherwise use the default
 					className={clsx(
 						`md:w-96 w-full h-96 bg-gray-300 md:rounded-lg rounded-none relative ${
 							clickable ? 'cursor-pointer' : ''
 						}`,
 						classNames,
 					)}
-					// call setIsLightBoxOpen if clickable is true
 					onClick={() => clickable && setIsLightBoxOpen(true)}
 				>
 					<Image
@@ -88,7 +103,10 @@ export const ProductImageGallery = ({
 									? 'border-2 border-primary-orange'
 									: 'border-2 border-transparent'
 							}`}
-							onClick={() => setCurrentImageIndex(index)}
+							onClick={() => {
+								setCurrentImageIndex(index);
+								setCurrentIndex(index);
+							}}
 						>
 							<Image
 								src={image.thumbnailSrc}
